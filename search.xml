@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>sspanel中转</title>
+      <link href="/posts/3055/"/>
+      <url>/posts/3055/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>问题：直接对接台湾家宽，速度不理想，想到了用nat机中转，但是面板ip地址那里是不变化的，台湾家宽两天变动一次，两天手动改ip太麻烦，就写了一个shell脚本清理缓存dns以后解析域名的ip，并实时传递到数据库，从而避免手动改ip 的麻烦！</p></blockquote><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#! bin&#x2F;bash</span><br><span class="line">systemctl start nscd   #需要安装  yum install -y nscd</span><br><span class="line">name&#x3D;&#96;host 域名 | cut -d &#39; &#39; -f4&#96;</span><br><span class="line">mysql -u用户名 -p密码  &lt;&lt;EOF</span><br><span class="line">update 数据库.表 set node_ip &#x3D; &quot;$name&quot; where id &#x3D; 需要改动的节点id;</span><br><span class="line">quit</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure><div class="note info">            <p>shell脚本在数据库所在的机器运行</p>          </div><h4 id="添加定时任务"><a href="#添加定时任务" class="headerlink" title="添加定时任务"></a>添加定时任务</h4><blockquote><p>我的脚本在主目录下，<code>crontab -e</code> 进入定时任务，在最后一行加入</p></blockquote><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">*/1 * * * * sh /root/test.sh</span><br></pre></td></tr></table></figure><div class="note info">            <p>运行时间可根据自己的需求进行修改</p>          </div><ol><li>测试<ul><li>测试</li><li>ceiling</li><li>册</li><li>吃</li><li>吃了</li></ul></li></ol><ol><li><p>ads</p><ul><li><p>速度的</p></li><li><p>水电费</p></li></ul></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SSPANEL,linux,sql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/posts/16107/"/>
       <url>/posts/16107/</url>
